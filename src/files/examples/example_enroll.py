@@ -66,6 +66,7 @@ try:
     else:
         print('Fingerprints do not match')
     characterics = str(f.downloadCharacteristics(0x01))
+    print(characterics)
     fl=open("shas-store",'aw')
     fr=open("shas-store",'r')
     ## Hashes characteristics of template
