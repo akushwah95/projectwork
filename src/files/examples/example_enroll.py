@@ -6,7 +6,7 @@
 
 import time
 from pyfingerprint.pyfingerprint import PyFingerprint
-
+import hashlib
 
 ## Enrolls new finger
 ##
@@ -44,7 +44,6 @@ try:
     if ( positionNumber >= 0 ):
         print('Template already exists at position #' + str(positionNumber))
         exit(0)
-
     print('Remove finger...')
     time.sleep(2)
 
@@ -66,6 +65,18 @@ try:
         print('New template position #' + str(positionNumber))
     else:
         print('Fingerprints do not match')
+    characterics = str(f.downloadCharacteristics(0x01))
+    fl=open("shas-store",'aw')
+    fr=open("shas-store",'r')
+    ## Hashes characteristics of template
+    hashes = hashlib.sha256(characterics).hexdigest()
+    print type(hashes)
+    hashes_file=fr.read()
+    if hashes not in hashes_file:
+        fl.write(hashes+'-')
+    else:
+        print "Hash already present machaaa!!!"
+    print('SHA-2 hash of template: ' + hashlib.sha256(characterics).hexdigest())
 
     ## Saves template at new position number
     # positionNumber = f.storeTemplate()
