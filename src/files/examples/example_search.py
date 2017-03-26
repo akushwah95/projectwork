@@ -79,7 +79,7 @@ try:
         print (get_data.text)
         while True:
             print ('List of parties along with the number :')
-            for number, party_name in party_list.iterkeys():
+            for number, party_name in party_list.iteritems():
                 print party_name,number
             try:
                 vote_to=int(raw_input("Please enter Party Number to vote to:"))
