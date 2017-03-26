@@ -13,7 +13,7 @@ import hashlib
 
 ## Tries to initialize the sensor
 try:
-    f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+    f = PyFingerprint('COM11', 57600, 0xFFFFFFFF, 0x00000000)
 
     if ( f.verifyPassword() == False ):
         raise ValueError('The given fingerprint sensor password is wrong!')
@@ -67,8 +67,8 @@ try:
         print('Fingerprints do not match')
     characterics = str(f.downloadCharacteristics(0x01))
     print(characterics)
-    fl=open("shas-store",'aw')
-    fr=open("shas-store",'r')
+    fl=open("shas-store","a")
+    fr=open("shas-store","r")
     ## Hashes characteristics of template
     hashes = hashlib.sha256(characterics).hexdigest()
     print type(hashes)
