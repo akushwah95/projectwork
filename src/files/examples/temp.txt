@@ -1,0 +1,9 @@
+    print type(hashes)
+    hashes_file=fr.read()
+    if hashes not in hashes_file:
+    	fl.write(hashes+'-')
+    print('SHA-2 hash of template: ' + hashlib.sha256(characterics).hexdigest())
+    fl.close()
+
+        fl=open("shas",'a')
+    fr=open("shas",'r')
