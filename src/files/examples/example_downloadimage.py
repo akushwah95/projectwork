@@ -5,15 +5,21 @@
 """
 
 import tempfile
+from platform import platform
+
 from pyfingerprint.pyfingerprint import PyFingerprint
 
 
 ## Reads image and download it
 ##
-
+plt= platform().lower()
+if "windows" in plt:
+    port="COM11"
+else:
+    port="/dev/ttyUSB0"
 ## Tries to initialize the sensor
 try:
-    f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+    f = PyFingerprint(port, 57600, 0xFFFFFFFF, 0x00000000)
 
     if ( f.verifyPassword() == False ):
         raise ValueError('The given fingerprint sensor password is wrong!')

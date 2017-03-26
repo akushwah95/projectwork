@@ -130,9 +130,6 @@ class PyFingerprint(object):
         @param integer(4 bytes) password
         """
 
-        if ( os.path.exists(port) == False ):
-            raise ValueError('The fingerprint sensor port "' + port + '" was not found!')
-
         if ( baudRate < 9600 or baudRate > 115200 or baudRate % 9600 != 0 ):
             raise ValueError('The given baudrate is invalid!')
 
