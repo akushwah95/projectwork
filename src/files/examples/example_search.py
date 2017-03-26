@@ -5,6 +5,7 @@
 """
 
 import hashlib
+import json
 import os
 from platform import platform
 
@@ -78,10 +79,12 @@ try:
     get_data = requests.get(get_url)
     fetch_voter = voter_url + '/' + hashes
     get_user = requests.get(fetch_voter)
-    name = get_user.content.get("name")
+    user_content=json.loads(get_user.content)
+    name = user_content.get("name")
     if get_data.status_code == 200:
         os.system('clear')
-        voted_to = get_data.content.get("hasVotedto")
+        data_content=json.loads(get_data.content)
+        voted_to = data_content.get("hasVotedto")
         print ('Sorry %s you have already voted to %' % (name,voted_to))
         time.sleep(5)
     else:
