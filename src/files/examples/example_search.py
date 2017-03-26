@@ -14,6 +14,7 @@ import requests
 
 
 url = "http://35.154.44.42:8080/userenrollment/webapi/voter"
+voter_url = "http://35.154.44.42:8080/userenrollment/webapi/users"
 plt = platform().lower()
 if "windows" in plt:
     port = "COM11"
@@ -75,9 +76,17 @@ try:
 
     get_url = url+"/"+hashes
     get_data = requests.get(get_url)
-    if get_data.status_code == 204:
-        print (get_data.text)
+    fetch_voter = voter_url + '/' + hashes
+    get_user = requests.get(fetch_voter)
+    name = get_user.content.get("name")
+    if get_data.status_code == 200:
+        os.system('clear')
+        voted_to = get_data.content.get("hasVotedto")
+        print ('Sorry %s you have already voted to %' % (name,voted_to))
+        time.sleep(5)
+    else:
         while True:
+            print ('Hello %s !!' % name)
             print ('List of parties along with the number :')
             for number, party_name in party_list.iteritems():
                 print party_name,number
@@ -89,6 +98,7 @@ try:
             except ValueError as v:
                 print ('Invalid Party Number!!!')
                 print ('Try Again')
+                time.sleep(5)
                 os.system('clear')
         post_url = url
         headers = {'content-type' : 'application/json'}
