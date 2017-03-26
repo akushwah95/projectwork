@@ -4,6 +4,7 @@
 """
 Enrolls a voter to the database
 """
+import os
 
 import requests
 import time
@@ -82,6 +83,7 @@ try:
         father_name = raw_input("Please Enter Father's name : ")
         address = raw_input("Please enter address :")
         mobile_number = int(raw_input("Please Enter Mobile Number :"))
+        os.system('clear')
         positionNumber = f.storeTemplate()
         headers = {'content-type': 'application/json'}
         diction = "{\"address\": \"%s\",\"dob\":\"%s\",\"fatherName\": \"%s\",\"fingerPrint\": \"%s\",\"mobileNumber\": %s,\
