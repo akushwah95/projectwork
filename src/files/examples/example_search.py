@@ -76,14 +76,20 @@ try:
     hashes = hashlib.sha256(characterics).hexdigest()
 
     get_url = url+"/"+hashes
+    print get_url
     get_data = requests.get(get_url)
+    print get_data
     fetch_voter = voter_url + '/' + hashes
+    print fetch_voter
     get_user = requests.get(fetch_voter)
+    print get_user
     user_content=json.loads(get_user.content)
+    print user_content
     name = user_content.get("name")
+    time.sleep(5)
     if get_data.status_code == 200:
         os.system('clear')
-        data_content=json.loads(get_data.content)
+        data_content = json.loads(get_data.content)
         voted_to = data_content.get("hasVotedto")
         print ('Sorry %s you have already voted to %' % (name,voted_to))
         time.sleep(5)
@@ -94,7 +100,7 @@ try:
             for number, party_name in party_list.iteritems():
                 print party_name,number
             try:
-                vote_to=int(raw_input("Please enter Party Number to vote to:"))
+                vote_to = int(raw_input("Please enter Party Number to vote to:"))
                 if party_list.get(vote_to) is None:
                     raise ValueError
                 break
