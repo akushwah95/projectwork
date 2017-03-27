@@ -5,6 +5,7 @@
 """
 from platform import platform
 
+import time
 from pyfingerprint.pyfingerprint import PyFingerprint
 plt= platform().lower()
 if "windows" in plt:
@@ -32,14 +33,12 @@ print('Currently used templates: ' + str(f.getTemplateCount()) +'/'+ str(f.getSt
 ## Tries to delete the template of the finger
 try:
     tableIndex = f.getTemplateIndex(0)
-    print tableIndex
     for index, val in enumerate(tableIndex):
         if val:
-            a=raw_input('delete madi ?')
-            if a=='y':
+                print index,val
                 if ( f.deleteTemplate(tableIndex.index(index)) == True ):
                     print('Template deleted!')
-
+    time.sleep(5)
 except Exception as e:
     print('Operation failed!')
     print('Exception message: ' + str(e))

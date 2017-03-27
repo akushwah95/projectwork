@@ -5,6 +5,7 @@
 """
 from platform import platform
 
+import time
 from pyfingerprint.pyfingerprint import PyFingerprint
 plt= platform().lower()
 if "windows" in plt:
@@ -36,7 +37,7 @@ try:
 
     if ( f.deleteTemplate(positionNumber) == True ):
         print('Template deleted!')
-
+time.sleep(5)
 except Exception as e:
     print('Operation failed!')
     print('Exception message: ' + str(e))
