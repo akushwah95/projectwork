@@ -33,9 +33,8 @@ print('Currently used templates: ' + str(f.getTemplateCount()) +'/'+ str(f.getSt
 try:
     tableIndex = f.getTemplateIndex(0)
     print tableIndex
-    for index in tableIndex:
-        if index is True:
-            print index,tableIndex.index(index)
+    for index, val in enumerate(tableIndex):
+        if val:
             a=raw_input('delete madi ?')
             if a=='y':
                 if ( f.deleteTemplate(tableIndex.index(index)) == True ):
