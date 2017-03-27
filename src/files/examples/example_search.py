@@ -84,7 +84,7 @@ try:
     if get_data.status_code == 200:
         os.system('clear')
         data_content = json.loads(get_data.content)
-        voted_to = data_content.get("hasVotedto")
+        voted_to = data_content.get("hasVotedTo")
         print ("Sorry %s you have already voted to %s" % (name, voted_to))
         time.sleep(5)
     else:
