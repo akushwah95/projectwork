@@ -36,7 +36,7 @@ try:
     for index, val in enumerate(tableIndex):
         if val:
                 print index,val
-                if ( f.deleteTemplate(tableIndex.index(index)) == True ):
+                if ( f.deleteTemplate(index) == True ):
                     print('Template deleted!')
     time.sleep(5)
 except Exception as e:
