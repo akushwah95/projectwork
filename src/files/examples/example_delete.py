@@ -37,7 +37,8 @@ try:
 
     if ( f.deleteTemplate(positionNumber) == True ):
         print('Template deleted!')
-time.sleep(5)
+
+    time.sleep(5)
 except Exception as e:
     print('Operation failed!')
     print('Exception message: ' + str(e))
