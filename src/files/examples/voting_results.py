@@ -13,6 +13,6 @@ vote_store = json.loads(voting_data.text)
 print ('Vote Counter')
 for party in vote_store:
     print party.get('hasVotedTo'),'------>',party.get('count')
-v=raw_input('Press any key to exit')
+v=raw_input('Press any Enter to exit')
 print ('Exiting.....')
 time.sleep(5)
